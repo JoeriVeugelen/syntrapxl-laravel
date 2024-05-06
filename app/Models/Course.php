@@ -30,4 +30,9 @@ class Course extends Model
         'details_for_text',
         'details_requirements_text',
     ];
+
+    public function savings()
+    {
+        return $this->belongsToMany(Saving::class, 'course_saving', 'course_id', 'saving_id');
+    }
 }
