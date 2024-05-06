@@ -12,12 +12,14 @@
     <!-- Styles -->
     @vite('resources/css/app.css')
 </head>
-<body>
+<body class="bg-[#f4f4f4]">
     <div id="app">
         <!-- Here you might include a navigation bar -->
 
         <main class="py-4">
-            @yield('content')
+            <div class="custom-container">
+                @yield('content')
+            </div>
         </main>
     </div>
 
