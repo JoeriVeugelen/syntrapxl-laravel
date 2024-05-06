@@ -14,7 +14,21 @@
 </head>
 <body class="bg-[#f4f4f4]">
     <div id="app">
-        <!-- Here you might include a navigation bar -->
+
+        <nav class="w-full bg-white py-2 border-gray-200 border-b">
+                <div class="custom-container w-full h-8">
+                <div class="flex justify-between flex-row w-full">
+                    <div class="h-8">
+                        <a href="/courses">
+                            <img class="object-contain h-full" src="{{ asset('logo-syntra.svg') }}" alt="">
+                        </a>
+                    </div>
+                    <div>
+                        <a class="text-[10px] uppercase" href="/courses">Cursussen</a>
+                    </div>
+                </div>
+                </div>
+        </nav>
 
         <main class="py-4">
             <div class="custom-container">

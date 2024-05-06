@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="font-bold text-4xl my-8">Cursussen</h1>
+    <h1 class="font-bold text-4xl mt-8">Opleidingen</h1>
+    <p class="mb-8 text-xs"><span class="font-bold text-red-500 text-xs">{{ $courses->count() }}</span> opleidingen gevonden.</p>
 
     <div class="grid gap-8">
     @foreach ($courses as $course)
@@ -24,7 +25,8 @@
             @endif
         @endforeach
 
-        <div class="bg-white py-8 pr-8 pl-16 border-gray-200 border min-h-64 relative">
+        <a href="{{ route('courses.show', $course) }}">
+        <div class="bg-white py-8 pr-8 pl-16 border-gray-200 border min-h-64 relative cursor-pointer">
             <div class="absolute left-0 bg-red-500 text-white font-bold py-2 px-3"><i class="fa-solid fa-arrow-right"></i></div>
             <div class="grid grid-cols-1 h-full items-center md:grid-cols-4">
                 <div class="col-span-3 h-full">
@@ -43,6 +45,7 @@
                 </div>
             </div>
         </div>
+        </a>
     @endforeach
     </div>
 @endsection
