@@ -18,6 +18,18 @@ class CourseController extends Controller
         return view('courses.index', ['courses' => $courses, 'sectors' => $sectors]);
     }
 
+    public function getCoursesBySector(Request $request)
+    {
+        $sectorIds = $request->input('sector_ids');
+        if ($sectorIds == null) {
+            $courses = Course::all();
+        } else {
+            $courses = Course::whereIn('sector_id', $sectorIds)->get();
+        }
+
+        return view('courses.courses_partial', ['courses' => $courses]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
