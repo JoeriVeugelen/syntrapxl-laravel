@@ -9,4 +9,4 @@ Route::get('/', function () {
 
 Route::resource('courses', CourseController::class);
 Route::get('/courses/{course}', [CourseController::class, 'show'])->name('courses.show');
-Route::get('/api/courses', [CourseController::class, 'getCoursesBySector']);
+Route::get('/api/courses', [CourseController::class, 'getCoursesBySectorAndDuration']);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\Sector;
+use App\Models\Duration;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -15,16 +16,29 @@ class CourseController extends Controller
     {
         $courses = Course::all();
         $sectors = Sector::all();
-        return view('courses.index', ['courses' => $courses, 'sectors' => $sectors]);
+        $durations = Duration::all();
+        return view('courses.index', ['courses' => $courses, 'sectors' => $sectors, 'durations' => $durations]);
     }
 
-    public function getCoursesBySector(Request $request)
+    public function getCoursesBySectorAndDuration(Request $request)
     {
         $sectorIds = $request->input('sector_ids');
-        if ($sectorIds == null) {
+        $durationIds = $request->input('duration_ids');
+
+        if ($sectorIds == null && $durationIds == null) {
             $courses = Course::all();
         } else {
-            $courses = Course::whereIn('sector_id', $sectorIds)->get();
+            $query = Course::query();
+
+            if ($sectorIds != null) {
+                $query->whereIn('sector_id', $sectorIds);
+            }
+
+            if ($durationIds != null) {
+                $query->whereIn('duration_id', $durationIds);
+            }
+
+            $courses = $query->get();
         }
 
         return view('courses.courses_partial', ['courses' => $courses]);
